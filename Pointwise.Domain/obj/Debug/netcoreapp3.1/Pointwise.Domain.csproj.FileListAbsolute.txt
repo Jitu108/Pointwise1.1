@@ -1,0 +1,17 @@
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.deps.json
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.csproj.CoreCompileInputs.cache
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.AssemblyInfoInputs.cache
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.AssemblyInfo.cs
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\InPoints\InPoints.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.deps.json
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\bin\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.AssemblyInfoInputs.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.AssemblyInfo.cs
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.csproj.CoreCompileInputs.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Domain\obj\Debug\netcoreapp3.1\Pointwise.Domain.csprojAssemblyReference.cache

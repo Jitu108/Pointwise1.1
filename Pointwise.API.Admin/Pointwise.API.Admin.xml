@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pointwise.API.Admin</name>
+    </assembly>
+    <members>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Get">
+            <summary>
+            Gets List of Categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.GetAll">
+            <summary>
+            Gets All categorys. Including soft-deleted ones.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.GetBySearchString(System.String)">
+            <summary>
+            Searches category by text
+            </summary>
+            <param name="searchString">searchString is case-insensitive</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.GetById(System.Int32)">
+            <summary>
+            Gets category by Id
+            </summary>
+            <param name="id">Id of Category</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Create(Pointwise.API.Admin.DTO.CategoryDto)">
+            <summary>
+            Creates a category
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Update(System.Int32,Pointwise.API.Admin.DTO.CategoryDto)">
+            <summary>
+            Updates a category
+            </summary>
+            <param name="id"></param>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Deletes a category
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.SoftDelete(System.Int32)">
+            <summary>
+            Soft-deletes a category
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.UndoSoftDelete(System.Int32)">
+            <summary>
+            Undoes soft-deletion of a category
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Get">
+            <summary>
+            Gets List of Sources
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.GetAll">
+            <summary>
+            Gets All sources. Including soft-deleted ones.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.GetBySearchString(System.String)">
+            <summary>
+            Searches source by text
+            </summary>
+            <param name="searchString">searchString is case-insensitive</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.GetById(System.Int32)">
+            <summary>
+            Gets source by Id
+            </summary>
+            <param name="id">Id of Source</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Create(Pointwise.API.Admin.DTO.SourceDto)">
+            <summary>
+            Creates a source
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Update(System.Int32,Pointwise.API.Admin.DTO.SourceDto)">
+            <summary>
+            Updates a source
+            </summary>
+            <param name="id"></param>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Delete(System.Int32)">
+            <summary>
+            Deletes a source
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.SoftDelete(System.Int32)">
+            <summary>
+            Soft-deletes a source
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.UndoSoftDelete(System.Int32)">
+            <summary>
+            Undoes soft-deletion of a source
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

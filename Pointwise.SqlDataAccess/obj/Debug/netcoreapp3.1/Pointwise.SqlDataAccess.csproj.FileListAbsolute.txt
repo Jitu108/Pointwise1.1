@@ -1,0 +1,15 @@
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.AssemblyInfoInputs.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.AssemblyInfo.cs
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.deps.json
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.csproj.CopyComplete
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.runtimeconfig.json
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.runtimeconfig.dev.json
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.genruntimeconfig.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.csprojAssemblyReference.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.SqlDataAccess\obj\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.csproj.CoreCompileInputs.cache
