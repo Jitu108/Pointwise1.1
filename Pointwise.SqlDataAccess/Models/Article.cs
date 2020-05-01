@@ -11,13 +11,11 @@ namespace Pointwise.SqlDataAccess.Models
     public partial class Article : Domain.Models.BaseEntity, IArticle
     {
         public int Id { get; set; }
-        public string Author { get; set; }
         public string Title { get; set; }
-        public string Summary { get; set; }
+        public string SubTitle { get; set; }
         public string Url { get; set; }
         public DateTime? PublicationDate { get; set; }
-        public string Content { get; set; }
-        public string Synopsis { get; set; }
+        public string Summary { get; set; }
 
         public virtual Source SqlSource { get; set; }
 
@@ -57,13 +55,12 @@ namespace Pointwise.SqlDataAccess.Models
             var article =  new Domain.Models.Article
             {
                 Id = this.Id,
-                Author = this.Author,
+                //Author = this.Author,
                 Title = this.Title,
-                Summary = this.Summary,
+                SubTitle = this.SubTitle,
                 Url = this.Url,
                 PublicationDate = this.PublicationDate,
-                Content = this.Content,
-                Synopsis = this.Synopsis,
+                Summary = this.Summary,
                 Source = this.SqlSource != null? this.SqlSource.ToDomainEntity() as ISource : new Source(),
                 Category = this.SqlCategory != null ? this.SqlCategory.ToDomainEntity() as ICategory : new Category(),
                 AssetType = this.AssetType,

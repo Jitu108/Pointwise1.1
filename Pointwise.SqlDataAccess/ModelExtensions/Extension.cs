@@ -37,13 +37,11 @@ namespace Pointwise.SqlDataAccess.ModelExtensions
             var article = new Article
             {
                 Id = entity.Id,
-                Author = entity.Author,
                 Title = entity.Title,
-                Summary = entity.Summary,
+                SubTitle = entity.SubTitle,
                 Url = entity.Url,
                 PublicationDate = entity.PublicationDate,
-                Content = entity.Content,
-                Synopsis = entity.Synopsis,
+                Summary = entity.Summary,
                 SqlSource = ((DomainModel.Source)entity.Source).ToPersistentEntity(),
                 SqlCategory = ((DomainModel.Category)entity.Category).ToPersistentEntity(),
                 AssetType = entity.AssetType,
@@ -70,7 +68,8 @@ namespace Pointwise.SqlDataAccess.ModelExtensions
             return new SqlUserRole
             {
                 Id = entity.Id,
-                Name = entity.Name
+                EntityType = entity.EntityType,
+                AccessType = entity.AccessType
             };
         }
 
@@ -114,6 +113,7 @@ namespace Pointwise.SqlDataAccess.ModelExtensions
             {
                 Id = entity.Id,
                 Name = entity.Name,
+                Caption = entity.Caption,
                 Path = entity.Path,
                 ContentType = entity.ContentType,
                 Data = entity.Data,

@@ -10,14 +10,14 @@ using Pointwise.SqlDataAccess.SQLContext;
 namespace Pointwise.SqlDataAccess.Migrations
 {
     [DbContext(typeof(PointwiseSqlContext))]
-    [Migration("20200410223737_UpdatedArticleEntity")]
-    partial class UpdatedArticleEntity
+    [Migration("20200425220158_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.0-preview.2.20120.8")
+                .HasAnnotation("ProductVersion", "5.0.0-preview.2.20159.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -31,14 +31,11 @@ namespace Pointwise.SqlDataAccess.Migrations
                     b.Property<int>("AssetType")
                         .HasColumnType("int");
 
-                    b.Property<string>("Author")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -55,10 +52,10 @@ namespace Pointwise.SqlDataAccess.Migrations
                     b.Property<int?>("SourceId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Summary")
+                    b.Property<string>("SubTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Synopsis")
+                    b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -100,6 +97,9 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -130,8 +130,15 @@ namespace Pointwise.SqlDataAccess.Migrations
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Caption")
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
+
                     b.Property<string>("ContentType")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -143,7 +150,8 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasAnnotation("Default", 0);
 
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
@@ -176,6 +184,9 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -203,17 +214,23 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AccessType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("EntityType")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -223,6 +240,10 @@ namespace Pointwise.SqlDataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasCheckConstraint("CK_UserRoles_AccessType_Enum_Constraint", "[AccessType] IN(0, 1, 2, 3, 4, 5)");
+
+                    b.HasCheckConstraint("CK_UserRoles_EntityType_Enum_Constraint", "[EntityType] IN(1, 2, 3, 4)");
                 });
 
             modelBuilder.Entity("Pointwise.SqlDataAccess.Models.SqlUserType", b =>
@@ -231,15 +252,6 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -255,6 +267,9 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -282,6 +297,9 @@ namespace Pointwise.SqlDataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -379,7 +397,7 @@ namespace Pointwise.SqlDataAccess.Migrations
 
             modelBuilder.Entity("Pointwise.SqlDataAccess.Models.SqlUserRole", b =>
                 {
-                    b.HasOne("Pointwise.SqlDataAccess.Models.User", null)
+                    b.HasOne("Pointwise.SqlDataAccess.Models.User", "SqlUser")
                         .WithMany("SqlUserRoles")
                         .HasForeignKey("UserId");
                 });

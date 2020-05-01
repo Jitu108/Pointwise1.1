@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -15,11 +16,13 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly IAuthService authService;
         private readonly AppSettings appSetings;
+        private readonly IMapper mapper;
 
-        public AuthController(IAuthService authService, IOptions<AppSettings> appSetings)
+        public AuthController(IAuthService authService, IOptions<AppSettings> appSetings, IMapper mapper)
         {
             this.authService = authService ?? throw new ArgumentNullException(nameof(authService));
             this.appSetings = appSetings.Value;
+            this.mapper = mapper;
         }
 
         [AllowAnonymous]
@@ -33,7 +36,8 @@ namespace Pointwise.API.Admin.Controllers
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
-            return Ok(user);
+            return Ok(mapper.Map<UserDto>(user));
+            //return Ok(user);
         }
     }
 }

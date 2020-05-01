@@ -15,10 +15,7 @@ namespace Pointwise.SqlDataAccess.EntityConfigurations
             builder.HasKey(x => x.Id);
 
             // Property Configurations
-            builder.Property(x => x.Author)
-                .HasMaxLength(1000);
-
-            builder.Property(x => x.Summary)
+            builder.Property(x => x.SubTitle)
                 .HasMaxLength(4000);
 
             // Common Property Configurations

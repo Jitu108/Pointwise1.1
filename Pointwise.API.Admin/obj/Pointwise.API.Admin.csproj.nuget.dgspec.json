@@ -66,15 +66,15 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.0-preview.2.20120.8, )"
+              "version": "[5.0.0-preview.2.20159.4, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.2.1, )"
+              "version": "[5.3.3, )"
             }
           },
           "imports": [
@@ -214,23 +214,23 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.0-preview.2.20120.8, )"
+              "version": "[5.0.0-preview.2.20159.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0-preview.2.20120.8, )"
+              "version": "[5.0.0-preview.2.20159.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.0-preview.2.20120.8, )"
+              "version": "[5.0.0-preview.2.20159.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0-preview.2.20120.8, )"
+              "version": "[5.0.0-preview.2.20159.4, )"
             }
           },
           "imports": [

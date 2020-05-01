@@ -24,6 +24,7 @@ namespace Pointwise.SqlDataAccess.SQLContext
             new TagEntityConfiguration(modelBuilder.Entity<Tag>());
             new ArticleTagEntityConfiguration(modelBuilder.Entity<ArticleTag>());
             new UserEntityConfiguration(modelBuilder.Entity<User>());
+            new ImageEntityConfiguration(modelBuilder.Entity<Image>());
         }
 
         public virtual DbSet<Article> Articles { get; set; }

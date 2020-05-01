@@ -155,6 +155,7 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             {
                 var sEntity = context.Images.Find(entity.Id);
                 sEntity.Name = entity.Name;
+                sEntity.Caption = entity.Caption;
                 sEntity.Path = entity.Path;
                 sEntity.ContentType = entity.ContentType;
                 sEntity.Data = entity.Data;

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pointwise.API.Admin.Attributes;
 using Pointwise.API.Admin.DTO;
+using Pointwise.Domain.Enums;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;
 
@@ -25,6 +27,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorize(EntityType.Tag, AccessType.Select)]
         public IActionResult Get()
         {
             try
@@ -43,6 +46,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("All")]
+        [CustomAuthorize(EntityType.Tag, AccessType.Select)]
         public IActionResult GetAll()
         {
             try
@@ -61,6 +65,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("Search")]
+        [CustomAuthorize(EntityType.Tag, AccessType.Select)]
         public IActionResult GetBySearchString(string searchString)
         {
             try
@@ -79,6 +84,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetTagById")]
+        [CustomAuthorize(EntityType.Tag, AccessType.Select)]
         public IActionResult GetById(int id)
         {
             try
@@ -95,6 +101,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorize(EntityType.Tag, AccessType.Add)]
         public IActionResult Create([FromBody]TagDto tag)
         {
             try
@@ -123,6 +130,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [CustomAuthorize(EntityType.Tag, AccessType.Update)]
         public IActionResult Update(int id, [FromBody]TagDto tag)
         {
             try
@@ -146,6 +154,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [CustomAuthorize(EntityType.Tag, AccessType.Delete)]
         public IActionResult Delete(int id)
         {
             try
@@ -161,6 +170,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpDelete("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Tag, AccessType.SoftDelete)]
         public IActionResult SoftDelete(int id)
         {
             try
@@ -176,6 +186,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Tag, AccessType.UndoSoftDelete)]
         public IActionResult UndoSoftDelete(int id)
         {
             try

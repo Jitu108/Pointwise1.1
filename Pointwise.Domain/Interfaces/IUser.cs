@@ -1,8 +1,10 @@
-﻿using Pointwise.Domain.Enums;
+﻿using System;
+using System.Collections.Generic;
+using Pointwise.Domain.Enums;
 
 namespace Pointwise.Domain.Interfaces
 {
-    public interface IUser : IBaseEntity
+    public interface IUser
     {
         int Id { get; set; }
         string FirstName { get; set; }
@@ -16,5 +18,11 @@ namespace Pointwise.Domain.Interfaces
         string Password { get; set; }
         bool IsBlocked { get; set; }
         string Token { get; set; }
+        DateTime ExpiryDate { get; set; }
+        IEnumerable<IUserRole> Roles { get; set; }
+        int? CreatedBy { get; set; }
+        bool IsDeleted { get; set; }
+        DateTime CreatedOn { get; set; }
+        DateTime? LastModifiedOn { get; set; }
     }
 }

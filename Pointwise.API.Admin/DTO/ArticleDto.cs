@@ -9,14 +9,12 @@ namespace Pointwise.API.Admin.DTO
     public class ArticleDto
     {
         public int ArticleId { get; set; }
-        public string ArticleAuthor { get; set; }
         public string ArticleTitle { get; set; }
-        public string ArticleSummary { get; set; }
+        public string ArticleSubTitle { get; set; }
         // Article Url
         public string ArticleUrl { get; set; }
         public DateTime? ArticlePublicationDate { get; set; }
-        public string ArticleContent { get; set; }
-        public string ArticleSynopsis { get; set; }
+        public string ArticleSummary { get; set; }
         public int ArticleSourceId { get; set; }
         public string ArticleSource { get; set; }
 
@@ -28,6 +26,7 @@ namespace Pointwise.API.Admin.DTO
 
         public int ImageId { get; set; }
         public string ImageName { get; set; }
+        public string ImageCaption { get; set; }
         public string ImagePath { get; set; }
         public string ImageContentType { get; set; }
         public string ImageData { get; set; }

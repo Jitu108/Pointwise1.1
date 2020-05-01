@@ -120,13 +120,11 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             if (entity.Source != null) sEntity.SourceId = entity.Source.Id;
             if (entity.Category != null) sEntity.CategoryId = entity.Category.Id;
 
-            sEntity.Author = entity.Author;
             sEntity.Title = entity.Title;
-            sEntity.Summary = entity.Summary;
+            sEntity.SubTitle = entity.SubTitle;
             sEntity.Url = entity.Url;
             sEntity.PublicationDate = entity.PublicationDate;
-            sEntity.Content = entity.Content;
-            sEntity.Synopsis = entity.Synopsis;
+            sEntity.Summary = entity.Summary;
             //sEntity.SqlTags = context.Tags
             //    .Where(x => tagsToInsert.Contains(x.Id))
             //    .ToList();

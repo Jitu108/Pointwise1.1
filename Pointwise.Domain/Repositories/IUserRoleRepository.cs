@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 namespace Pointwise.Domain.Repositories
 {
-    public interface IUserRoleRepository : IRepository<IUserRole, UserRole>
+    public interface IUserRoleRepository
     {
+        IEnumerable<IUserRole> GetUserRoles(int userId);
+
     }
 }

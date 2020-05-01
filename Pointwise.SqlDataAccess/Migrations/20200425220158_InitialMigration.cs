@@ -14,6 +14,7 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 2000, nullable: false)
@@ -30,6 +31,7 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 2000, nullable: false)
@@ -46,6 +48,7 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
@@ -61,9 +64,6 @@ namespace Pointwise.SqlDataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -78,15 +78,14 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    Summary = table.Column<string>(nullable: true),
+                    SubTitle = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     PublicationDate = table.Column<DateTime>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
-                    Synopsis = table.Column<string>(nullable: true),
+                    Summary = table.Column<string>(nullable: true),
                     SourceId = table.Column<int>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true),
                     AssetType = table.Column<int>(nullable: false)
@@ -115,9 +114,6 @@ namespace Pointwise.SqlDataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 100, nullable: false),
                     MiddleName = table.Column<string>(maxLength: 100, nullable: true),
                     LastName = table.Column<string>(maxLength: 100, nullable: true),
@@ -127,7 +123,11 @@ namespace Pointwise.SqlDataAccess.Migrations
                     UserNameType = table.Column<int>(nullable: false),
                     UserName = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 50, nullable: false),
-                    IsBlocked = table.Column<bool>(nullable: false)
+                    IsBlocked = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -172,9 +172,11 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
+                    Caption = table.Column<string>(maxLength: 1000, nullable: true),
                     Path = table.Column<string>(nullable: true),
                     ContentType = table.Column<string>(nullable: true),
                     Data = table.Column<byte[]>(nullable: true),
@@ -202,14 +204,18 @@ namespace Pointwise.SqlDataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     LastModifiedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    EntityType = table.Column<int>(nullable: false),
+                    AccessType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserRoles", x => x.Id);
+                    table.CheckConstraint("CK_UserRoles_AccessType_Enum_Constraint", "[AccessType] IN(0, 1, 2, 3, 4, 5)");
+                    table.CheckConstraint("CK_UserRoles_EntityType_Enum_Constraint", "[EntityType] IN(1, 2, 3, 4)");
                     table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
                         column: x => x.UserId,
@@ -236,7 +242,8 @@ namespace Pointwise.SqlDataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Images_ArticleId",
                 table: "Images",
-                column: "ArticleId");
+                column: "ArticleId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_UserId",

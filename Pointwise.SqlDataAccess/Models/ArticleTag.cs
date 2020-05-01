@@ -35,13 +35,12 @@ namespace Pointwise.SqlDataAccess.Models
             return new Domain.Models.Article
             {
                 Id = this.Article.Id,
-                Author = this.Article.Author,
+                //Author = this.Article.Author,
                 Title = this.Article.Title,
-                Summary = this.Article.Summary,
+                SubTitle = this.Article.SubTitle,
                 Url = this.Article.Url,
                 PublicationDate = this.Article.PublicationDate,
-                Content = this.Article.Content,
-                Synopsis = this.Article.Synopsis,
+                Summary = this.Article.Summary,
                 Source = this.Article.SqlSource != null ? this.Article.SqlSource as ISource : new Source(),
                 Category = this.Article.SqlCategory != null ? this.Article.SqlCategory as ICategory : new Category(),
                 AssetType = this.Article.AssetType,

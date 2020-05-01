@@ -43,3 +43,14 @@ C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\obj\Debug\netcoreapp3
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll

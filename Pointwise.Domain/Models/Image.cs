@@ -8,6 +8,7 @@ namespace Pointwise.Domain.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Caption { get; set; }
         public string Path { get; set; }
         public string ContentType { get; set; }
         public byte[] Data { get; set; }

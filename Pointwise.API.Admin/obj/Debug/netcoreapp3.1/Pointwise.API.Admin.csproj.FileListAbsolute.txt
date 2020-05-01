@@ -131,3 +131,14 @@ C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreap
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\obj\Debug\netcoreapp3.1\Pointwise.API.Admin.csproj.CoreCompileInputs.cache
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\obj\Debug\netcoreapp3.1\Pointwise.API.Admin.MvcApplicationPartsAssemblyInfo.cs
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\obj\Debug\netcoreapp3.1\Pointwise.API.Admin.MvcApplicationPartsAssemblyInfo.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll

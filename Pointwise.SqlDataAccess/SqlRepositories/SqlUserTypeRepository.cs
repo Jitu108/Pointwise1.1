@@ -50,34 +50,17 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
 
         public bool SoftDelete(int id)
         {
-            var sEntity = context.UserTypes.SingleOrDefault(x => x.Id == id);
-            if (sEntity == null) return false;
-
-            sEntity.IsDeleted = true;
-            context.SaveChanges();
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool UndoSoftDelete(int id)
         {
-            var sEntity = context.UserTypes.SingleOrDefault(x => x.Id == id);
-            if (sEntity == null) return false;
-
-            sEntity.IsDeleted = false;
-            context.SaveChanges();
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool SoftDeleteRange(IEnumerable<Domain.Models.UserType> entities)
         {
-            var sEntities = entities.Select(x => x.ToPersistentEntity()).AsEnumerable();
-            //context.Categories.RemoveRange(sEntities);
-            foreach (var entity in sEntities)
-            {
-                entity.IsDeleted = true;
-            }
-            context.SaveChanges();
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool Delete(int id)
@@ -105,7 +88,6 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
 
             var sEntity = context.UserTypes.Find(entity.Id);
             sEntity.Name = entity.Name;
-            sEntity.LastModifiedOn = DateTime.Now;
 
             context.SaveChanges();
             return sEntity.ToDomainEntity();

@@ -6,8 +6,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pointwise.API.Admin.Attributes;
 using Pointwise.API.Admin.DTO;
 using Pointwise.API.Admin.Roles;
+using Pointwise.Domain.Enums;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;
 
@@ -35,6 +37,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpGet]
+        [CustomAuthorize(EntityType.Category, AccessType.Select)]
         public IActionResult Get()
         {
             try
@@ -61,6 +64,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpGet("All")]
+        [CustomAuthorize(EntityType.Category, AccessType.Select)]
         public IActionResult GetAll()
         {
             try
@@ -88,6 +92,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpGet("Search")]
+        [CustomAuthorize(EntityType.Category, AccessType.Select)]
         public IActionResult GetBySearchString(string searchString)
         {
             try
@@ -116,6 +121,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpGet("{id:int}", Name = "GetCategoryById")]
+        [CustomAuthorize(EntityType.Category, AccessType.Select)]
         public IActionResult GetById(int id)
         {
             try
@@ -143,6 +149,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         #endregion
         [HttpPost]
+        [CustomAuthorize(EntityType.Category, AccessType.Add)]
         public IActionResult Create([FromBody]CategoryDto category)
         {
             try
@@ -182,6 +189,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         #endregion
         [HttpPut("{id:int}")]
+        [CustomAuthorize(EntityType.Category, AccessType.Update)]
         public IActionResult Update(int id, [FromBody]CategoryDto category)
         {
             try
@@ -215,6 +223,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpDelete("{id:int}")]
+        [CustomAuthorize(EntityType.Category, AccessType.Delete)]
         public IActionResult Delete(int id)
         {
             try
@@ -239,6 +248,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpDelete("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Category, AccessType.SoftDelete)]
         public IActionResult SoftDelete(int id)
         {
             try
@@ -264,6 +274,7 @@ namespace Pointwise.API.Admin.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         #endregion
         [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Category, AccessType.UndoSoftDelete)]
         public IActionResult UndoSoftDelete(int id)
         {
             try

@@ -142,6 +142,7 @@ namespace Pointwise.API.Admin
             #region Add AutoMapper
             services.AddAutoMapper(typeof(Mappings));
             services.AddAutoMapper(typeof(ArticleMapping));
+            services.AddAutoMapper(typeof(UserMapping));
             #endregion
 
             #region Add Controllers

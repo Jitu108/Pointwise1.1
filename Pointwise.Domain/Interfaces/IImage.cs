@@ -6,6 +6,7 @@ namespace Pointwise.Domain.Interfaces
     {
         int Id { get; set; }
         string Name { get; set; }
+        string Caption { get; set; }
         string Path { get; set; }
         string ContentType { get; set; }
         byte[] Data { get; set; }

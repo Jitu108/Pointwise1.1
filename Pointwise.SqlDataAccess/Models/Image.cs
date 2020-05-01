@@ -9,6 +9,7 @@ namespace Pointwise.SqlDataAccess.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Caption { get; set; }
         public string Path { get; set; }
         public string ContentType { get; set; }
         public byte[] Data { get; set; }
@@ -26,6 +27,7 @@ namespace Pointwise.SqlDataAccess.Models
             {
                 Id = this.Id,
                 Name = this.Name,
+                Caption = this.Caption,
                 Path = this.Path,
                 ContentType = this.ContentType,
                 Data = this.Data,

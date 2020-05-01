@@ -36,11 +36,6 @@ namespace Pointwise.Domain.Services
             return articleRepository.GetById(id);
         }
 
-        public IEnumerable<IArticle> GetArticlesByAuthor(string author)
-        {
-            return articleRepository.GetAll().Where(x => x.Author.Contains(author));
-        }
-
         public IEnumerable<IArticle> GetArticleByTitle(string titleString)
         {
             return articleRepository.GetAll().Where(x => x.Title.Contains(titleString));
@@ -48,12 +43,7 @@ namespace Pointwise.Domain.Services
 
         public IEnumerable<IArticle> GetArticleByDescription(string descString)
         {
-            return articleRepository.GetAll().Where(x => x.Summary.Contains(descString));
-        }
-
-        public IEnumerable<IArticle> GetArticleByContent(string contentString)
-        {
-            return articleRepository.GetAll().Where(x => x.Content.Contains(contentString));
+            return articleRepository.GetAll().Where(x => x.SubTitle.Contains(descString));
         }
 
         public IEnumerable<IArticle> GetArticleBySource(int sourceId)

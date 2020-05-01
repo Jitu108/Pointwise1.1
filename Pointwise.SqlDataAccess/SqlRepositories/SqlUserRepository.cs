@@ -107,6 +107,7 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             sEntity.Password = entity.Password;
             sEntity.IsBlocked = entity.IsBlocked;
             sEntity.LastModifiedOn = DateTime.Now;
+            sEntity.CreatedBy = entity.CreatedBy;
 
             context.SaveChanges();
             return sEntity.ToDomainEntity();
@@ -125,7 +126,10 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
 
         public IUser Authenticate(string userName, string password)
         {
-            var user = context.Users.Include(x => x.SqlUserType).SingleOrDefault(x => x.UserName == userName && x.Password == password);
+            var user = context.Users
+                .Include(x => x.SqlUserType)
+                .Include(x => x.SqlUserRoles)
+                .SingleOrDefault(x => x.UserName == userName && x.Password == password);
             return user!= null? user.ToDomainEntity() : null;
         }
 

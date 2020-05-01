@@ -2,7 +2,9 @@
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Pointwise.API.Admin.Attributes;
 using Pointwise.API.Admin.DTO;
+using Pointwise.Domain.Enums;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;
 
@@ -22,6 +24,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult Get()
         {
             try
@@ -40,25 +43,8 @@ namespace Pointwise.API.Admin.Controllers
             }
         }
 
-        [HttpGet("Author")]
-        public IActionResult GetByAuthor(string author)
-        {
-            try
-            {
-                var entities = articleService.GetArticlesByAuthor(author)
-                    .Select(x => mapper.Map<ArticleDto>(x))
-                    .ToList();
-
-                if (entities.Any()) return Ok(entities);
-                else return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpGet("Title")]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult GetByTitle(string titleString)
         {
             try
@@ -77,6 +63,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("Desc")]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult GetByDesc(string descString)
         {
             try
@@ -94,25 +81,8 @@ namespace Pointwise.API.Admin.Controllers
             }
         }
 
-        [HttpGet("Content")]
-        public IActionResult GetByContent(string contentString)
-        {
-            try
-            {
-                var entities = articleService.GetArticleByContent(contentString)
-                    .Select(x => mapper.Map<ArticleDto>(x))
-                    .ToList();
-
-                if (entities.Any()) return Ok(entities);
-                else return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpGet("Source")]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult GetBySource(int sourceId)
         {
             try
@@ -131,6 +101,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("Category")]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult GetByCategory(int categoryId)
         {
             try
@@ -149,6 +120,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetArticleById")]
+        [CustomAuthorize(EntityType.Article, AccessType.Select)]
         public IActionResult GetById(int id)
         {
             try
@@ -165,6 +137,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPost]
+        [CustomAuthorize(EntityType.Article, AccessType.Add)]
         public IActionResult Create([FromBody]ArticleDto article)
         {
             try
@@ -187,6 +160,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [CustomAuthorize(EntityType.Article, AccessType.Update)]
         public IActionResult Update(int id, [FromBody]ArticleDto article)
         {
             try
@@ -210,6 +184,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [CustomAuthorize(EntityType.Article, AccessType.Delete)]
         public IActionResult Delete(int id)
         {
             try
@@ -225,6 +200,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpDelete("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Article, AccessType.SoftDelete)]
         public IActionResult SoftDelete(int id)
         {
             try
@@ -240,6 +216,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize(EntityType.Article, AccessType.UndoSoftDelete)]
         public IActionResult UndoSoftDelete(int id)
         {
             try

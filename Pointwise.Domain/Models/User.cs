@@ -1,9 +1,12 @@
-﻿using Pointwise.Domain.Enums;
+﻿using System;
+using System.Collections.Generic;
+using Pointwise.Domain.Enums;
 using Pointwise.Domain.Interfaces;
+
 
 namespace Pointwise.Domain.Models
 {
-    public sealed class User : BaseEntity, IUser
+    public sealed class User : IUser
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -17,6 +20,11 @@ namespace Pointwise.Domain.Models
         public string Password { get; set; }
         public bool IsBlocked { get; set; }
         public string Token { get; set; }
-
+        public DateTime ExpiryDate { get; set; }
+        public IEnumerable<IUserRole> Roles { get; set; }
+        public int? CreatedBy { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime? LastModifiedOn { get; set; }
     }
 }
