@@ -17,8 +17,6 @@ namespace Pointwise.Domain.Interfaces
         string UserName { get; set; }
         string Password { get; set; }
         bool IsBlocked { get; set; }
-        string Token { get; set; }
-        DateTime ExpiryDate { get; set; }
         IEnumerable<IUserRole> Roles { get; set; }
         int? CreatedBy { get; set; }
         bool IsDeleted { get; set; }

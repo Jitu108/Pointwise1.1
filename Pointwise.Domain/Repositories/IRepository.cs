@@ -18,7 +18,6 @@ namespace Pointwise.Domain.Repositories
         bool UndoSoftDelete(int id);
 
         IEntity GetById(int id);
-        //IEnumerable<IEntity> GetBySearchString(string searchString);
 
         IEntity Update(TEntity entity);
 

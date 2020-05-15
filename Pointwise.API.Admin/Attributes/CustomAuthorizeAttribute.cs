@@ -15,5 +15,10 @@ namespace Pointwise.API.Admin.Attributes
 
             Roles = Enum.GetName(typeof(EntityType), entityType) + Enum.GetName(typeof(AccessType), accessType) + ",Admin";
         }
+
+        public CustomAuthorizeAttribute() : base()
+        {
+            Roles = "Admin";
+        }
     }
 }

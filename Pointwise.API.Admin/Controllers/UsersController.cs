@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pointwise.API.Admin.Attributes;
 using Pointwise.API.Admin.DTO;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;
@@ -15,13 +19,38 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly IUserService userService;
         private readonly IMapper mapper;
-        public UsersController(IUserService userService, IMapper mapper)
+        private int loggedInUserId;
+        public UsersController(IUserService userService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.userService = userService ?? throw new ArgumentNullException(nameof(userService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            this.loggedInUserId = Int32.Parse(userid);
+        }
+
+        [HttpGet]
+        [CustomAuthorize()]
+        public IActionResult Get()
+        {
+            try
+            {
+                var entities = userService.GetUsers();
+                var entitiesdto = entities
+                    .Select(x => mapper.Map<UserDto>(x))
+                    .ToList();
+
+                if (entitiesdto.Any()) return Ok(entitiesdto);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("{id:int}", Name = "GetUserById")]
+        [CustomAuthorize()]
         public IActionResult GetById(int id)
         {
             try
@@ -38,14 +67,17 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Create([FromBody]UserDto user)
         {
             try
             {
                 if (!ModelState.IsValid || user == null) return BadRequest(ModelState);
-                
 
-                var addedEntity = userService.Add(mapper.Map<User>(user));
+                var domainEntity = mapper.Map<User>(user);
+                domainEntity.CreatedBy = loggedInUserId;
+
+                var addedEntity = userService.Add(domainEntity);
                 if (addedEntity == null)
                 {
                     ModelState.AddModelError("", $"Something went wrong while saving the User {user.FirstName + " " + user.LastName}");
@@ -61,14 +93,16 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [CustomAuthorize()]
         public IActionResult Update(int id, [FromBody]UserDto user)
         {
             try
             {
                 if (!ModelState.IsValid || user == null) return BadRequest(ModelState);
 
-                user.Id = id;
-                var updatedEntity = userService.Update(mapper.Map<User>(user));
+                var domainEntity = mapper.Map<User>(user);
+                domainEntity.CreatedBy = loggedInUserId;
+                var updatedEntity = userService.Update(domainEntity);
 
                 if (updatedEntity != null) return Ok(mapper.Map<UserDto>(updatedEntity));
                 else
@@ -76,6 +110,70 @@ namespace Pointwise.API.Admin.Controllers
                     ModelState.AddModelError("", $"Something went wrong while updating the user {user.FirstName + " " + user.LastName}");
                     return StatusCode(500, ModelState);
                 }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("[action]/{id:int}")]
+        [CustomAuthorize()]
+        public IActionResult SoftDelete(int id)
+        {
+            try
+            {
+                var status = userService.SoftDelete(id);
+                if (status) return Ok();
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize()]
+        public IActionResult UndoSoftDelete(int id)
+        {
+            try
+            {
+                var status = userService.UndoSoftDelete(id);
+                if (status) return Ok();
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize()]
+        public IActionResult Block(int id)
+        {
+            try
+            {
+                var status = userService.Block(id);
+                if (status) return Ok();
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPatch("[action]/{id:int}")]
+        [CustomAuthorize()]
+        public IActionResult Unblock(int id)
+        {
+            try
+            {
+                var status = userService.Unblock(id);
+                if (status) return Ok();
+                else return NotFound();
             }
             catch (Exception ex)
             {

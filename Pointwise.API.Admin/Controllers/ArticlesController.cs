@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pointwise.API.Admin.Attributes;
 using Pointwise.API.Admin.DTO;
@@ -16,11 +18,15 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly IArticleService articleService;
         private readonly IMapper mapper;
+        private int loggedInUserId;
 
-        public ArticlesController(IArticleService articleService, IMapper mapper)
+        public ArticlesController(IArticleService articleService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.articleService = articleService ?? throw new ArgumentNullException(nameof(articleService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            this.loggedInUserId = Int32.Parse(userid);
         }
 
         [HttpGet]
@@ -143,8 +149,11 @@ namespace Pointwise.API.Admin.Controllers
             try
             {
                 if (!ModelState.IsValid || article == null) return BadRequest(ModelState);
-                var art = mapper.Map<Article>(article);
-                var addedEntity = articleService.Add(art);
+
+                var domainEntity = mapper.Map<Article>(article);
+                domainEntity.CreatedBy = loggedInUserId;
+
+                var addedEntity = articleService.Add(domainEntity);
                 if (addedEntity == null)
                 {
                     ModelState.AddModelError("", $"Something went wrong while saving the article {article.ArticleTitle}");

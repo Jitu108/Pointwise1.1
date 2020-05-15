@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Pointwise.API.Admin.DTO;
+using Pointwise.API.Admin.Models;
 using Pointwise.Domain.Enums;
 using Pointwise.Domain.Models;
 using System;
@@ -61,13 +62,27 @@ namespace Pointwise.API.Admin.Mapper
     {
         public UserMapping()
         {
+            CreateMap<AuthUser, AuthUserDto>()
+                .ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => Enum.GetName(typeof(UserNameType), src.UserNameType)))
+                .ForMember(dest => dest.UserType, opt => opt.MapFrom(src => src.UserType.Name))
+                .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.Roles.Select(y => new Role { AccessType = y.AccessTypeName, EntityType = y.EntityTypeName }).ToList()));
+
+            CreateMap<AuthUserDto, AuthUser>()
+                .ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.UserNameType)? UserNameType.Custom : (UserNameType)Enum.Parse(typeof(UserNameType), src.UserNameType, true)))
+                .ForMember(dest => dest.UserType, opt => opt.MapFrom(src => new UserType { Name = src.UserType }))
+                .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.Roles.Select(y => new UserRole
+                {
+                    EntityType = (EntityType)Enum.Parse(typeof(EntityType), y.EntityType, true),
+                    AccessType = (AccessType)Enum.Parse(typeof(AccessType), y.AccessType, true)
+                })));
+
             CreateMap<User, UserDto>()
-                //.ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => Enum.GetName(typeof(UserNameType), src.UserNameType)))
+                .ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => Enum.GetName(typeof(UserNameType), src.UserNameType)))
                 .ForMember(dest => dest.UserType, opt => opt.MapFrom(src => src.UserType.Name))
                 .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.Roles.Select(y => new Role { AccessType = y.AccessTypeName, EntityType = y.EntityTypeName }).ToList()));
 
             CreateMap<UserDto, User>()
-                //.ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => (UserNameType)Enum.Parse(typeof(UserNameType), src.UserNameType, true)))
+                .ForMember(dest => dest.UserNameType, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.UserNameType) ? UserNameType.Custom : (UserNameType)Enum.Parse(typeof(UserNameType), src.UserNameType, true)))
                 .ForMember(dest => dest.UserType, opt => opt.MapFrom(src => new UserType { Name = src.UserType }))
                 .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.Roles.Select(y => new UserRole
                 {

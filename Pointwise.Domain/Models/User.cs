@@ -6,7 +6,7 @@ using Pointwise.Domain.Interfaces;
 
 namespace Pointwise.Domain.Models
 {
-    public sealed class User : IUser
+    public class User : IUser
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -19,8 +19,6 @@ namespace Pointwise.Domain.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsBlocked { get; set; }
-        public string Token { get; set; }
-        public DateTime ExpiryDate { get; set; }
         public IEnumerable<IUserRole> Roles { get; set; }
         public int? CreatedBy { get; set; }
         public bool IsDeleted { get; set; }

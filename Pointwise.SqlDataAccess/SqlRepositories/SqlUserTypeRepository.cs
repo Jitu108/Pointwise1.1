@@ -102,5 +102,11 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
         {
             throw new NotImplementedException();
         }
+
+        public IUserType GetByName(string name)
+        {
+            var usertype = context.UserTypes.Where(x => x.Name == name).FirstOrDefault().ToDomainEntity();
+            return usertype;
+        }
     }
 }

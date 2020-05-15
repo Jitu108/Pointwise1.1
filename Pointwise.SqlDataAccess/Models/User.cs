@@ -42,11 +42,6 @@ namespace Pointwise.SqlDataAccess.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsBlocked { get; set; }
-        [NotMapped]
-        public string Token { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        [NotMapped]
-        public DateTime ExpiryDate { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
         public int? CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -81,6 +76,33 @@ namespace Pointwise.SqlDataAccess.Models
                 ? this.SqlUserRoles.Select(x => x.ToDomainEntity()) : new List<UserRole>();
 
             return user;
+        }
+
+        public Domain.Models.AuthUser ToAuthEntity()
+        {
+            var authUser = new Domain.Models.AuthUser
+            {
+                Id = this.Id,
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                EmailAddress = this.EmailAddress,
+                PhoneNumber = this.PhoneNumber,
+                UserType = this.UserType,
+                UserNameType = this.UserNameType,
+                UserName = this.UserName,
+                Password = this.Password,
+                IsBlocked = this.IsBlocked,
+                CreatedOn = this.CreatedOn,
+                LastModifiedOn = this.LastModifiedOn,
+                IsDeleted = this.IsDeleted
+            };
+
+            authUser.Roles =
+                this.SqlUserRoles != null
+                ? this.SqlUserRoles.Select(x => x.ToDomainEntity()) : new List<UserRole>();
+
+            return authUser;
         }
     }
 }

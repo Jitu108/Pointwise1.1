@@ -15,6 +15,13 @@ namespace Pointwise.Domain.ServiceInterfaces
         bool UserIsBlocked(IUser user);
         IUser Add(Models.User user);
         IUser Update(Models.User user);
+
+        bool SoftDelete(int id);
+        bool UndoSoftDelete(int id);
+
+        bool Block(int id);
+        bool Unblock(int id);
+
         bool IsUnique(string userName);
     }
 }

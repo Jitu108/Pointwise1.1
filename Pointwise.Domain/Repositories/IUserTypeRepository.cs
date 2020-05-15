@@ -6,5 +6,6 @@ namespace Pointwise.Domain.Repositories
 {
     public interface IUserTypeRepository : IRepository<IUserType, UserType>
     {
+        IUserType GetByName(string name);
     }
 }

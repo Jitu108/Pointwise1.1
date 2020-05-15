@@ -34,9 +34,20 @@ namespace Pointwise.API.Admin.Controllers
 
             if (user == null)
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Username or password is incorrect." });
             }
-            return Ok(mapper.Map<UserDto>(user));
+            else if(user.IsBlocked)
+            {
+                return BadRequest(new { message = "User is blocked." });
+            }
+            else if (user.IsDeleted)
+            {
+                return BadRequest(new { message = "User is deleted." });
+            }
+            else
+            {
+                return Ok(mapper.Map<AuthUserDto>(user));
+            }
             //return Ok(user);
         }
     }

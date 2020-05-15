@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pointwise.Domain.Interfaces;
-using Pointwise.Domain.Models;
 using Pointwise.Domain.Repositories;
 using Pointwise.SqlDataAccess.ModelExtensions;
 using Pointwise.SqlDataAccess.SQLContext;
@@ -20,10 +19,46 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
 
         }
 
+        public IEnumerable<IUser> GetAll()
+        {
+            var users = context.Users
+                .Include(x => x.SqlUserType)
+                .Include(x => x.SqlUserRoles)
+                .AsEnumerable().Select(x => x.ToDomainEntity()).ToList();
+            return users;
+        }
+
+        public IUser GetById(int id)
+        {
+            
+            try
+            {
+                var user = context.Users
+                .Include(x => x.SqlUserType)
+                .Include(x => x.SqlUserRoles)
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+                if(user != null)
+                {
+                    return user.ToDomainEntity();
+                }
+                else
+                {
+                    return null;
+                }
+                
+            } catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IUser Add(Domain.Models.User entity)
         {
             var sEntity = entity.ToPersistentEntity();
-            if (entity.UserType == null) sEntity.UserTypeId = 3;
+
+            // TODO: Move it to Service
+            if (entity.UserType == null || entity.UserType.Id == 0) sEntity.UserTypeId = 2;
             var insertedRow = context.Users.Add(sEntity);
             context.SaveChanges();
 
@@ -31,19 +66,9 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             //return entity;
         }
 
-        public IEnumerable<IUser> AddRange(IEnumerable<Domain.Models.User> entities)
-        {
-            throw new NotImplementedException();
-            //var sEntities = entities.Select(x => x.ToPersistentEntity()).AsEnumerable();
-            //var insertedRows = context.Users.AddRange(sEntities);
-            //context.SaveChanges();
-
-            //return insertedRows.Select(x => x.ToDomainEntity()).AsEnumerable();
-        }
-
         public bool SoftDelete(int id)
         {
-            var sEntity = context.UserRoles.SingleOrDefault(x => x.Id == id);
+            var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
             if (sEntity == null) return false;
 
             sEntity.IsDeleted = true;
@@ -53,7 +78,7 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
 
         public bool UndoSoftDelete(int id)
         {
-            var sEntity = context.UserRoles.SingleOrDefault(x => x.Id == id);
+            var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
             if (sEntity == null) return false;
 
             sEntity.IsDeleted = false;
@@ -61,34 +86,9 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             return true;
         }
 
-        public bool SoftDeleteRange(IEnumerable<Domain.Models.User> entities)
-        {
-            var sEntities = entities.Select(x => x.ToPersistentEntity()).AsEnumerable();
-            foreach (var entity in sEntities)
-            {
-                entity.IsDeleted = true;
-            }
-            context.SaveChanges();
-            return true;
-        }
-
         public bool Delete(int id)
         {
-            var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
-            if (sEntity == null) return false;
-
-            context.Users.Remove(sEntity);
-            context.SaveChanges();
-            return true;
-        }
-
-        public bool DeleteRange(IEnumerable<Domain.Models.User> entities)
-        {
-            var sEntities = entities.Select(x => x.ToPersistentEntity()).AsEnumerable();
-            context.Users.RemoveRange(sEntities);
-
-            context.SaveChanges();
-            return true;
+            throw new NotImplementedException();
         }
 
         public IUser Update(Domain.Models.User entity)
@@ -101,48 +101,24 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             sEntity.LastName = entity.LastName;
             sEntity.EmailAddress = entity.EmailAddress;
             sEntity.PhoneNumber = entity.PhoneNumber;
-            sEntity.UserType = entity.UserType;
+            sEntity.UserTypeId = entity.UserType.Id;
             sEntity.UserNameType = entity.UserNameType;
             sEntity.UserName = entity.UserName;
             sEntity.Password = entity.Password;
             sEntity.IsBlocked = entity.IsBlocked;
+            sEntity.IsDeleted = entity.IsDeleted;
+
             sEntity.LastModifiedOn = DateTime.Now;
-            sEntity.CreatedBy = entity.CreatedBy;
+            
 
             context.SaveChanges();
             return sEntity.ToDomainEntity();
-        }
-
-        public IEnumerable<IUser> GetAll()
-        {
-            var users = context.Users.AsEnumerable().Select(x => x.ToDomainEntity()).ToList();
-            return users;
-        }
-
-        public IUser GetById(int id)
-        {
-            return context.Users.Find(id).ToDomainEntity();
-        }
-
-        public IUser Authenticate(string userName, string password)
-        {
-            var user = context.Users
-                .Include(x => x.SqlUserType)
-                .Include(x => x.SqlUserRoles)
-                .SingleOrDefault(x => x.UserName == userName && x.Password == password);
-            return user!= null? user.ToDomainEntity() : null;
         }
 
         public bool IsUnique(string userName)
         {
             var userExists = context.Users.SingleOrDefault(x => x.UserName == userName);
             return userExists == null;
-        }
-
-        public bool Logout(string userName)
-        {
-            var userExists = context.Users.SingleOrDefault(x => x.UserName == userName);
-            return userExists != null;
         }
 
         public void Dispose()
@@ -153,6 +129,26 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
         public bool Exist(string name)
         {
             throw new NotImplementedException();
+        }
+
+        public bool Block(int id)
+        {
+            var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
+            if (sEntity == null) return false;
+
+            sEntity.IsBlocked = true;
+            context.SaveChanges();
+            return true;
+        }
+
+        public bool Unblock(int id)
+        {
+            var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
+            if (sEntity == null) return false;
+
+            sEntity.IsBlocked = false;
+            context.SaveChanges();
+            return true;
         }
     }
 }

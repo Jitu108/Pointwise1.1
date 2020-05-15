@@ -19,6 +19,8 @@ using Pointwise.SqlDataAccess.SQLContext;
 using Pointwise.SqlDataAccess.SqlRepositories;
 using AutoMapper;
 using Pointwise.API.Admin.Mapper;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Pointwise.API.Admin
 {
@@ -44,13 +46,17 @@ namespace Pointwise.API.Admin
 
             #region Repository DI
             services.AddScoped<IArticleRepository, SqlArticleRepository>();
+            services.AddScoped<IAuthRepository, SqlAuthRepository>();
             services.AddScoped<ICategoryRepository, SqlCategoryRepository>();
             services.AddScoped<ISourceRepository, SqlSourceRepository>();
             services.AddScoped<IImageRepository, SqlImageRepository>();
             services.AddScoped<ITagRepository, SqlTagRepository>();
             services.AddScoped<IUserRepository, SqlUserRepository>();
             services.AddScoped<IUserRoleRepository, SqlUserRoleRepository>();
-            services.AddScoped<IUserTypeRepository, SqlUserTypeRepository>(); 
+            services.AddScoped<IUserTypeRepository, SqlUserTypeRepository>();
+
+            services.AddHttpContextAccessor();
+            services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             #endregion
 
             #region Services DI

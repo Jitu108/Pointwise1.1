@@ -68,8 +68,10 @@ namespace Pointwise.SqlDataAccess.ModelExtensions
             return new SqlUserRole
             {
                 Id = entity.Id,
+                UserId = entity.User.Id,
                 EntityType = entity.EntityType,
-                AccessType = entity.AccessType
+                AccessType = entity.AccessType,
+                CreatedBy = entity.CreatedBy
             };
         }
 

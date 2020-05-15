@@ -27,6 +27,7 @@ namespace Pointwise.SqlDataAccess.Models
             return new Domain.Models.UserRole
             {
                 Id = this.Id,
+                User = this.SqlUser.ToDomainEntity(),
                 EntityType = this.EntityType,
                 AccessType = this.AccessType,
                 CreatedOn = this.CreatedOn,

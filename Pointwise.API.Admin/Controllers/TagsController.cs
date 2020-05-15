@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -19,11 +20,14 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly ITagService tagService;
         private readonly IMapper mapper;
-
-        public TagsController(ITagService tagService, IMapper mapper)
+        private int loggedInUserId;
+        public TagsController(ITagService tagService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.tagService = tagService ?? throw new ArgumentNullException(nameof(tagService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            this.loggedInUserId = Int32.Parse(userid);
         }
 
         [HttpGet]
@@ -113,8 +117,10 @@ namespace Pointwise.API.Admin.Controllers
                     ModelState.AddModelError("", "Tag Exists.");
                     return StatusCode(404, ModelState);
                 }
+                var domainEntity = mapper.Map<Tag>(tag);
+                domainEntity.CreatedBy = loggedInUserId;
 
-                var addedEntity = tagService.Add(mapper.Map<Tag>(tag));
+                var addedEntity = tagService.Add(domainEntity);
                 if (addedEntity == null)
                 {
                     ModelState.AddModelError("", $"Something went wrong while saving the tag {tag.Name}");

@@ -6,6 +6,7 @@ using Pointwise.Domain.Repositories;
 using Pointwise.SqlDataAccess.ModelExtensions;
 using Pointwise.SqlDataAccess.SQLContext;
 using Microsoft.EntityFrameworkCore;
+using Pointwise.SqlDataAccess.Models;
 
 namespace Pointwise.SqlDataAccess.SqlRepositories
 {
@@ -107,14 +108,14 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             var sEntity = context.Articles
-                //.Include(x => x.SqlTags)
+                .Include(x => x.ArticleTags)
                 .Where(x => x.Id == entity.Id)
                 .FirstOrDefault();
 
             if (sEntity == null) return null;
 
-            var tagsToInsert = entity.Tags
-                .Select(x => x.Id)
+            var tagsToUpdate = entity.Tags
+                .Select(x => new ArticleTag { ArticleId = entity.Id, TagId = x.Id})
                 .ToList();
 
             if (entity.Source != null) sEntity.SourceId = entity.Source.Id;
@@ -125,9 +126,7 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             sEntity.Url = entity.Url;
             sEntity.PublicationDate = entity.PublicationDate;
             sEntity.Summary = entity.Summary;
-            //sEntity.SqlTags = context.Tags
-            //    .Where(x => tagsToInsert.Contains(x.Id))
-            //    .ToList();
+            sEntity.ArticleTags = tagsToUpdate;
 
             sEntity.LastModifiedOn = DateTime.Now;
 

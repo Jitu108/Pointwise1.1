@@ -13,13 +13,13 @@ namespace Pointwise.Domain.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IUserRepository repository;
+        private readonly IAuthRepository repository;
 
-        public AuthService(IUserRepository repository)
+        public AuthService(IAuthRepository repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
-        public IUser Authenticate(string userName, string password, byte[] key)
+        public IAuthUser Authenticate(string userName, string password, byte[] key)
         {
             var user = repository.Authenticate(userName, password);
 
@@ -35,7 +35,7 @@ namespace Pointwise.Domain.Services
             claims.Add(adminRoleClaim);
 
             user.Password = string.Empty;
-            var expiryDate = DateTime.UtcNow.AddDays(2);
+            var expiryDate = DateTime.UtcNow.AddMinutes(20);
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {

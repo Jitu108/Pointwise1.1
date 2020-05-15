@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -22,10 +23,15 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly ISourceService sourceService;
         private readonly IMapper mapper;
-        public SourcesController(ISourceService sourceService, IMapper mapper)
+        private int loggedInUserId;
+
+        public SourcesController(ISourceService sourceService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.sourceService = sourceService ?? throw new ArgumentNullException(nameof(sourceService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            this.loggedInUserId = Int32.Parse(userid);
         }
 
         #region Attributes
@@ -163,8 +169,10 @@ namespace Pointwise.API.Admin.Controllers
                     ModelState.AddModelError("", "Source Exists.");
                     return StatusCode(404, ModelState);
                 }
+                var domainEntity = mapper.Map<Source>(source);
+                domainEntity.CreatedBy = loggedInUserId;
 
-                var addedEntity = sourceService.Add(mapper.Map<Source>(source));
+                var addedEntity = sourceService.Add(domainEntity);
                 if(addedEntity == null)
                 {
                     ModelState.AddModelError("", $"Something went wrong while saving the source {source.Name}");

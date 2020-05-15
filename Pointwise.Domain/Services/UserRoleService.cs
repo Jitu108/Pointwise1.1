@@ -1,4 +1,5 @@
 ﻿using Pointwise.Domain.Interfaces;
+using Pointwise.Domain.Models;
 using Pointwise.Domain.Repositories;
 using Pointwise.Domain.ServiceInterfaces;
 using System;
@@ -18,6 +19,11 @@ namespace Pointwise.Domain.Services
         public IEnumerable<IUserRole> GetUserRoles(int userId)
         {
             return repository.GetUserRoles(userId);
+        }
+
+        public IUserRole AddUserRole(UserRole entity)
+        {
+            return repository.AddUserRole(entity);
         }
     }
 }

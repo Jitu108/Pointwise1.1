@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -21,10 +22,14 @@ namespace Pointwise.API.Admin.Controllers
     {
         private readonly ICategoryService categoryService;
         private readonly IMapper mapper;
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        private int loggedInUserId;
+        public CategoriesController(ICategoryService categoryService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            this.loggedInUserId = Int32.Parse(userid);
         }
 
         #region Attributes
@@ -161,8 +166,10 @@ namespace Pointwise.API.Admin.Controllers
                     ModelState.AddModelError("", "Category Exists.");
                     return StatusCode(404, ModelState);
                 }
+                var domainEntity = mapper.Map<Category>(category);
+                domainEntity.CreatedBy = loggedInUserId;
 
-                var addedEntity = categoryService.Add(mapper.Map<Category>(category));
+                var addedEntity = categoryService.Add(domainEntity);
                 if (addedEntity == null)
                 {
                     ModelState.AddModelError("", $"Something went wrong while saving the category {category.Name}");

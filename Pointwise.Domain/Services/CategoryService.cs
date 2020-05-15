@@ -11,7 +11,6 @@ namespace Pointwise.Domain.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository repository;
-
         public CategoryService(ICategoryRepository repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
