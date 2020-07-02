@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pointwise.Domain.Repositories
 {
-    public interface ISourceRepository : IRepository<ISource, Source>
+    public interface ISourceRepository : IRepository<ISource, Source>, IExistRepository
     {
     }
 }

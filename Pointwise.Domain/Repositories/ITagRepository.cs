@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pointwise.Domain.Repositories
 {
-    public interface ITagRepository : IRepository<ITag, Tag>
+    public interface ITagRepository : IRepository<ITag, Tag>, IExistRepository
     {
         ITag GetByName(string name);
         IEnumerable<ITag> GetByName(IEnumerable<string> names);

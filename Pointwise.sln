@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.Domain", "Pointwise.Domain\Pointwise.Domain.csproj", "{08AA27A2-B47A-4D63-B720-0F720089400D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointwise.SqlDataAccess", "Pointwise.SqlDataAccess\Pointwise.SqlDataAccess.csproj", "{E0B1C360-6E4E-4794-9C0B-1B97611275D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.SqlDataAccess", "Pointwise.SqlDataAccess\Pointwise.SqlDataAccess.csproj", "{E0B1C360-6E4E-4794-9C0B-1B97611275D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointwise.API.Admin", "Pointwise.API.Admin\Pointwise.API.Admin.csproj", "{8D0823A2-D9FF-40FA-B123-5E06DD718CCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.API.Admin", "Pointwise.API.Admin\Pointwise.API.Admin.csproj", "{8D0823A2-D9FF-40FA-B123-5E06DD718CCA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.Console", "Pointwise.Console\Pointwise.Console.csproj", "{5A47BC22-177A-4BB1-97BD-02AEED60C899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointwise.API", "Pointwise.API\Pointwise.API.csproj", "{FE581234-C5ED-4CF4-A698-0997E895E9D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5A47BC22-177A-4BB1-97BD-02AEED60C899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A47BC22-177A-4BB1-97BD-02AEED60C899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A47BC22-177A-4BB1-97BD-02AEED60C899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

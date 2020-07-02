@@ -168,10 +168,5 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
                 return sEntity.ToDomainEntity();
             }
         }
-
-        public bool Exist(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

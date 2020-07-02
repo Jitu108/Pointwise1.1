@@ -138,10 +138,5 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
         {
             context.Dispose();
         }
-
-        public bool Exist(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

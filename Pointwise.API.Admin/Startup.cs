@@ -75,7 +75,7 @@ namespace Pointwise.API.Admin
                     options.SwaggerDoc("PointwiseAPISpec",
                         new Microsoft.OpenApi.Models.OpenApiInfo()
                         {
-                            Title = "Pointwise API",
+                            Title = "Pointwise Admin API",
                             Version = "1",
                             Description = "The Admin API is meant for providing back-end service to front-end. The front-end is to be provided to super-admin, authors or editors who are responsible to create news content.",
                             Contact = new Microsoft.OpenApi.Models.OpenApiContact()
@@ -179,7 +179,7 @@ namespace Pointwise.API.Admin
 
             app.UseRouting();
 
-            app.UseCors(x=> x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
 

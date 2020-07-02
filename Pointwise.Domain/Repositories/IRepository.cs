@@ -20,8 +20,6 @@ namespace Pointwise.Domain.Repositories
         IEntity GetById(int id);
 
         IEntity Update(TEntity entity);
-
-        bool Exist(string name);
     }
 
     public interface IRepository

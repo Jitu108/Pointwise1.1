@@ -98,11 +98,6 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             context.Dispose();
         }
 
-        public bool Exist(string name)
-        {
-            throw new NotImplementedException();
-        }
-
         public IUserType GetByName(string name)
         {
             var usertype = context.UserTypes.Where(x => x.Name == name).FirstOrDefault().ToDomainEntity();

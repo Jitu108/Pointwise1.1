@@ -126,11 +126,6 @@ namespace Pointwise.SqlDataAccess.SqlRepositories
             context.Dispose();
         }
 
-        public bool Exist(string name)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Block(int id)
         {
             var sEntity = context.Users.SingleOrDefault(x => x.Id == id);
