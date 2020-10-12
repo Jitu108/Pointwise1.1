@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pointwise.Common\Pointwise.Common.csproj" />
     <ProjectReference Include="..\Pointwise.SqlDataAccess\Pointwise.SqlDataAccess.csproj" />
   </ItemGroup>
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pointwise.Common.DTO;
 using Pointwise.Domain.ServiceInterfaces;
 
 namespace Pointwise.API.Controllers
@@ -32,11 +33,11 @@ namespace Pointwise.API.Controllers
         {
             try
             {
-                //var entitydto = mapper.Map<UserDto>(userService.GetById(id));
+                var entitydto = mapper.Map<UserDto>(userService.GetById(id));
 
-                //if (entitydto != null) return Ok(entitydto);
-                //else 
-                return NotFound();
+                if (entitydto != null) return Ok(entitydto);
+                else
+                    return NotFound();
             }
             catch (Exception ex)
             {

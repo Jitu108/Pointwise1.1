@@ -142,3 +142,5 @@ C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\P
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\Pointwise.SqlDataAccess.pdb
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\Pointwise.Domain.pdb
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\Pointwise.API.xml
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\Pointwise.Common.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API\bin\Debug\netcoreapp3.1\Pointwise.Common.pdb

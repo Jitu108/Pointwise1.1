@@ -2680,6 +2680,23 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Pointwise.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "AutoMapper": "9.0.0",
+          "Pointwise.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Pointwise.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pointwise.Common.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Pointwise.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -8610,6 +8627,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Pointwise.Common/1.0.0": {
+      "type": "project",
+      "path": "../Pointwise.Common/Pointwise.Common.csproj",
+      "msbuildProject": "../Pointwise.Common/Pointwise.Common.csproj"
+    },
     "Pointwise.Domain/1.0.0": {
       "type": "project",
       "path": "../Pointwise.Domain/Pointwise.Domain.csproj",
@@ -8629,6 +8651,7 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0-preview.3.20181.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.2",
+      "Pointwise.Common >= 1.0.0",
       "Pointwise.SqlDataAccess >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.4.1"
     ]
@@ -8663,6 +8686,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\GitHub Project\\1. GitHub\\Pointwise1.1\\Pointwise.Common\\Pointwise.Common.csproj": {
+              "projectPath": "C:\\GitHub Project\\1. GitHub\\Pointwise1.1\\Pointwise.Common\\Pointwise.Common.csproj"
+            },
             "C:\\GitHub Project\\1. GitHub\\Pointwise1.1\\Pointwise.SqlDataAccess\\Pointwise.SqlDataAccess.csproj": {
               "projectPath": "C:\\GitHub Project\\1. GitHub\\Pointwise1.1\\Pointwise.SqlDataAccess\\Pointwise.SqlDataAccess.csproj"
             }
