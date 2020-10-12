@@ -30,14 +30,14 @@
             <param name="id">Id of Category</param>
             <returns></returns>
         </member>
-        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Create(Pointwise.API.Admin.DTO.CategoryDto)">
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Create(Pointwise.Common.DTO.CategoryDto)">
             <summary>
             Creates a category
             </summary>
             <param name="category"></param>
             <returns></returns>
         </member>
-        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Update(System.Int32,Pointwise.API.Admin.DTO.CategoryDto)">
+        <member name="M:Pointwise.API.Admin.Controllers.CategoriesController.Update(System.Int32,Pointwise.Common.DTO.CategoryDto)">
             <summary>
             Updates a category
             </summary>
@@ -92,14 +92,14 @@
             <param name="id">Id of Source</param>
             <returns></returns>
         </member>
-        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Create(Pointwise.API.Admin.DTO.SourceDto)">
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Create(Pointwise.Common.DTO.SourceDto)">
             <summary>
             Creates a source
             </summary>
             <param name="source"></param>
             <returns></returns>
         </member>
-        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Update(System.Int32,Pointwise.API.Admin.DTO.SourceDto)">
+        <member name="M:Pointwise.API.Admin.Controllers.SourcesController.Update(System.Int32,Pointwise.Common.DTO.SourceDto)">
             <summary>
             Updates a source
             </summary>

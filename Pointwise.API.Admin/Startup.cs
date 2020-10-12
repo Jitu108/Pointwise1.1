@@ -18,9 +18,9 @@ using Pointwise.Domain.Services;
 using Pointwise.SqlDataAccess.SQLContext;
 using Pointwise.SqlDataAccess.SqlRepositories;
 using AutoMapper;
-using Pointwise.API.Admin.Mapper;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Pointwise.Common.Mapper;
 
 namespace Pointwise.API.Admin
 {

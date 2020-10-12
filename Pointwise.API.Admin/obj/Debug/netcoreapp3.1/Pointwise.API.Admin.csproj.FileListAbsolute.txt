@@ -142,3 +142,5 @@ C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreap
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Pointwise.Common.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.API.Admin\bin\Debug\netcoreapp3.1\Pointwise.Common.pdb

@@ -10,6 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTO\**" />
+    <Compile Remove="Mapper\**" />
+    <Compile Remove="Models\**" />
+    <Content Remove="DTO\**" />
+    <Content Remove="Mapper\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="DTO\**" />
+    <EmbeddedResource Remove="Mapper\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="DTO\**" />
+    <None Remove="Mapper\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
@@ -20,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pointwise.Common\Pointwise.Common.csproj" />
     <ProjectReference Include="..\Pointwise.Domain\Pointwise.Domain.csproj" />
     <ProjectReference Include="..\Pointwise.SqlDataAccess\Pointwise.SqlDataAccess.csproj" />
   </ItemGroup>

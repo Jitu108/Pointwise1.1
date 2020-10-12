@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pointwise.API.Admin.Attributes;
-using Pointwise.API.Admin.DTO;
+using Pointwise.Common.DTO;
 using Pointwise.Domain.Enums;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;

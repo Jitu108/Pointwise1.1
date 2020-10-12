@@ -14,7 +14,7 @@ namespace Pointwise.API.Admin.Controllers
     public class StaticDataController : ControllerBase
     {
         [HttpGet("[action]")]
-        [CustomAuthorize()]
+        //[CustomAuthorize()]
         public IActionResult Entities()
         {
             try
@@ -32,7 +32,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("[action]")]
-        [CustomAuthorize()]
+        //[CustomAuthorize()]
         public IActionResult AccessTypes()
         {
             try

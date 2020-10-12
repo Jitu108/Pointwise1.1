@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pointwise.API.Admin.Attributes;
-using Pointwise.API.Admin.DTO;
+using Pointwise.Common.DTO;
 using Pointwise.Domain.Models;
 using Pointwise.Domain.ServiceInterfaces;
 
@@ -24,9 +24,9 @@ namespace Pointwise.API.Admin.Controllers
         {
             this.userService = userService ?? throw new ArgumentNullException(nameof(userService));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            var nameClaim = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name);
 
-            var userid = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-            this.loggedInUserId = Int32.Parse(userid);
+            this.loggedInUserId = nameClaim != null? Int32.Parse(nameClaim.Value) : 0;
         }
 
         [HttpGet]
@@ -50,7 +50,7 @@ namespace Pointwise.API.Admin.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetUserById")]
-        [CustomAuthorize()]
+        //[CustomAuthorize()]
         public IActionResult GetById(int id)
         {
             try
@@ -75,7 +75,7 @@ namespace Pointwise.API.Admin.Controllers
                 if (!ModelState.IsValid || user == null) return BadRequest(ModelState);
 
                 var domainEntity = mapper.Map<User>(user);
-                domainEntity.CreatedBy = loggedInUserId;
+                //domainEntity.CreatedBy = loggedInUserId;
 
                 var addedEntity = userService.Add(domainEntity);
                 if (addedEntity == null)

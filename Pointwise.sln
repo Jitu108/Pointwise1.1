@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.API.Admin", "Poin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.Console", "Pointwise.Console\Pointwise.Console.csproj", "{5A47BC22-177A-4BB1-97BD-02AEED60C899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointwise.API", "Pointwise.API\Pointwise.API.csproj", "{FE581234-C5ED-4CF4-A698-0997E895E9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pointwise.API", "Pointwise.API\Pointwise.API.csproj", "{FE581234-C5ED-4CF4-A698-0997E895E9D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointwise.Common", "Pointwise.Common\Pointwise.Common.csproj", "{484925D4-7D56-46F1-B6E4-92515C7E4879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE581234-C5ED-4CF4-A698-0997E895E9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{484925D4-7D56-46F1-B6E4-92515C7E4879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484925D4-7D56-46F1-B6E4-92515C7E4879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484925D4-7D56-46F1-B6E4-92515C7E4879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484925D4-7D56-46F1-B6E4-92515C7E4879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

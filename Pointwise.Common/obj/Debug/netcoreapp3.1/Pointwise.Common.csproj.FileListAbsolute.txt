@@ -1,0 +1,12 @@
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\bin\Debug\netcoreapp3.1\Pointwise.Common.deps.json
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\bin\Debug\netcoreapp3.1\Pointwise.Common.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\bin\Debug\netcoreapp3.1\Pointwise.Common.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.AssemblyInfoInputs.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.AssemblyInfo.cs
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.csprojAssemblyReference.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\bin\Debug\netcoreapp3.1\Pointwise.Domain.dll
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\bin\Debug\netcoreapp3.1\Pointwise.Domain.pdb
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.csproj.CoreCompileInputs.cache
+C:\GitHub Project\1. GitHub\Pointwise1.1\Pointwise.Common\obj\Debug\netcoreapp3.1\Pointwise.Common.csproj.CopyComplete

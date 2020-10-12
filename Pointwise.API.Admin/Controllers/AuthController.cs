@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Pointwise.API.Admin.DTO;
+using Pointwise.Common.DTO;
 using Pointwise.Domain.ServiceInterfaces;
 
 namespace Pointwise.API.Admin.Controllers
